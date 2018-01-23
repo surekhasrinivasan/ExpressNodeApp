@@ -1,6 +1,9 @@
 var express = require("express");
 var app = express();
 
+/*
+//Express Level 1 Assignment 
+
 // a. Create a root route that returns “Hello World”
 app.get('/',function(request, response){
     response.send('Hello World');
@@ -22,7 +25,17 @@ app.get('/currentdate', function(request, response){
     response.write(Date());
     response.end();
  });
+*/
 
-app.listen(process.env.PORT, function(){
-    console.log("Running Express..");
+//Express Level 2 Assignment 
+//Create static middleware which serves files under the public directory
+app.use(express.static('public'));
+
+//Create a /cities route in your app.js file with at least 4 cities.
+app.get('/cities', function(request, response) {
+	var cities = ['Boston', 'Princeton', 'New York', 'Hartford'];
+	response.json(cities);
+});
+app.listen(process.env.PORT, function() {
+	console.log("Running Express..");
 });
