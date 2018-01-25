@@ -1,4 +1,4 @@
-/*global $ append*/
+/*global $*/
 $(function() {
 	$.get('/cities', appendToList);
 
