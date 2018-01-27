@@ -12,13 +12,11 @@ var cities = {
 	'Hartford': 'Connecticut',
 	'Hampton': 'Virginia'
 };
-//variable holding the object length
-var cityLength = Object.keys(cities).length;
 //Create static middleware which serves files under the public directory
 app.use(express.static('public'));
 //Create a /cities route in your app.js file with at least 5 cities.
 app.get('/cities', function(request, response) {
-	if (request.query.limit > cityLength) {
+	if (request.query.limit > Object.keys(cities).length) {
 		response.json('Limit exceeded');
 	} else if (request.query.limit > 0) {
 		response.json(Object.keys(cities).slice(0, request.query.limit));
