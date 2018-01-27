@@ -1,6 +1,10 @@
-//Express Level 3 Assignment
+//Express Level 4 Assignment
 var express = require("express");
 var app = express();
+var bodyParser = require('body-parser');
+var parseUrlencoded = bodyParser.urlencoded({
+	extended: false
+});
 var cities = {
 	'Boston': 'Massachusetts',
 	'Princeton': 'New Jersey',
@@ -27,10 +31,19 @@ app.get('/cities/:name', function(request, response) {
 	var cityName = name[0].toUpperCase() + name.slice(1).toLowerCase();
 	var stateName = cities[cityName];
 	if (!stateName) {
-		response.status(404).json("State not found for " + cityName);
+		response.status(404).json("State not found");
 	} else {
-		response.json(cityName + " city is in the state of " + stateName);
+		response.json(stateName);
 	}
+});
+app.post('/cities', parseUrlencoded, function(request, response) {
+	var newCity = request.body;
+	cities[newCity.name] = newCity.stateName;
+	response.status(201).json(newCity.name);
+});
+app.delete('/cities/:name', function(request, response) {
+	delete cities[request.cityName];
+	response.sendStatus(200);
 });
 app.listen(process.env.PORT, function() {
 	console.log("Running Express..");

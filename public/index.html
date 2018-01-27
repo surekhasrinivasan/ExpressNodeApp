@@ -4,18 +4,19 @@
 	<meta charset="UTF-8">
 	<meta content="width=device-width, initial-scale=1.0" name="viewport">
 	<meta content="ie=edge" http-equiv="X-UA-Compatible">
-	<title>Express Level 2</title>
+	<link href="style.css" rel="stylesheet">
+	<title>Express Assignment</title>
 </head>
 <body>
-	<h1>City Names</h1>
-	<div class="container">
-		<form id="list" name="list">
-			<div class="form-group">
-				<select id="selection">
-				</select>
-			</div>
-		</form>
-	</div>
+	<h1>City and State Names</h1>
+	<form>
+		<legend>Add New City and State :</legend> <input name="name" placeholder="City"> <input name="stateName" placeholder="State"> <input type="submit">
+	</form><br>
+	<ul class='city-list'></ul>
+	<h1>Take me around the World</h1>
+	<form>
+		<legend>Please input only numbers:</legend> <input name="lat" placeholder="Latitude"> <input name="long" placeholder="Longitude"> <input type="submit" value="Go!">
+	</form>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
 	</script> 
 	<script src="client.js">
